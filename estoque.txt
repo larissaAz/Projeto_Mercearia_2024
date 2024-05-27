@@ -1,0 +1,2 @@
+banana|5|Verduras|10
+pera|5|Verduras|10
