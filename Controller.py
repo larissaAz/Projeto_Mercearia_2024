@@ -179,7 +179,7 @@ class ControllerVenda:
 a = ControllerEstoque()
 a.cadastrarProduto('maca', '5', 'Verduras', 10)
 
-
+..
 
 
 
