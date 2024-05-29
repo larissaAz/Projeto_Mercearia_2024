@@ -1,0 +1,11 @@
+maca|4|Verduras|lari|lu|8|27/05/2024
+uva|12|Verduras|lari|catia|7|27/05/2024
+uva|12|Verduras|lari|catia|7|27/05/2024
+banana|5|Verduras|lari|catia|2|27/05/2024
+banana|5|Verduras|lari|catia|5|27/05/2024
+maca|4|Verduras|lari|catia|6|27/05/2024
+uva|12|Verduras|lari|catia|9|27/05/2024
+banana|5|Verduras|lari|catia|7|27/05/2024
+uva|12|Verduras|gloria|le|2|29/05/2024
+maca|4|Verduras|gloria|le|1|29/05/2024
+banana|5|Verduras|gloria|le|1|29/05/2024

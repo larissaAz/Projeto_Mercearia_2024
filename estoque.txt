@@ -1,2 +1,3 @@
-banana|5|Verduras|10
-pera|5|Verduras|10
+maca|4|Verduras|1
+banana|5|Verduras|1
+uva|12|Verduras|2
