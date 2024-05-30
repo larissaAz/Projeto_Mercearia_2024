@@ -111,7 +111,7 @@ class ControllerEstoque:
                     x = list(map(lambda x: Estoque(Produtos(novoNome, novoPreco, novaCategoria), novaQuantidade) if(x.produto.nome == nomeAlterar) else(x), x))
                     print('Produto alterado com sucesso')
                 else:
-                    print('Produto já cadastraado')
+                    print('Produto já cadastrado')
             else: 
                 print('O produto que deseja alterar não existe')
 
@@ -222,6 +222,74 @@ class ControllerVenda:
             cont += 1
 
         print(f"Total vendido: {total}")
+
+class ControllerFornecedor:
+    def cadastrarFornecedor(self, nome, cnpj, telefone, categoria):
+        x = DaoFornecedor.ler()
+        listaCnpj = list(filter(lambda x: x.cnpj == cnpj, x))
+        listaTelefone = list(filter(lambda x: x.telefone == telefone, x))
+        if len(listaCnpj) > 0:
+            print("O cnpj já existe")
+        elif len(listaTelefone) > 0:
+            print("O telefone já existe")
+        else:
+            if len(cnpj) == 14 and len(telefone) <= 11 and len(telefone) >= 10:
+                DaoFornecedor.salvar(Fornecedor(nome, cnpj, telefone, categoria))
+                print('Fornecedor cadastrado com sucesso')
+            else:
+                print("Digite um cnpj ou um telefone válido")
+                
+    def alterarFornecedor(self, nomeAlterar, novoNome, novoCnpj, novoTelefone, novoCategoria):
+        x = DaoFornecedor.ler()
+
+        est = list(filter(lambda x: x.nome == nomeAlterar, x))
+        if len(est) > 0:
+            est = list(filter(lambda x: x.cnpj == novoCnpj, x))
+            if len(est) == 0:
+                x = list(map(lambda x: Fornecedor(novoNome, novoCnpj, novoTelefone,novoCategoria) if(x.nome == nomeAlterar) else (x), x))
+                print("Fornecedor alterado com sucesso")
+            else:
+                print("Cnpj já existe")
+        else:
+            print("O fornecedor que deseja alterar não existe")
+
+        with open('fornecedores.txt', 'w') as arq:
+            for i in x:
+                arq.writelines(i.nome + '|' + i.cnpj + '|' + i.telefone + '|' + str(i.categoria))
+                arq.writelines('\n')
+            
+    def removerFornecedor(self, nome):
+        x = DaoFornecedor.ler()
+
+        est = list(filter(lambda x: x.nome == nome, x))
+        if len(est) > 0:
+            for i in range(len(x)):
+                if x[i].nome == nome:
+                    del  x[i]
+                    break
+                print("Fornecedor removido com sucesso")
+        else:
+            print('O fornecedor que deseja remover não existe')
+            return None
+        
+        with open('fornecedores.txt', 'w') as arq:
+            for i in x:
+                arq.writelines(i.nome + '|' + i.cnpj + '|' + i.telefone + '|' + str(i.categoria))
+                arq.writelines('\n')
+            
+    def mostrarFornecedores(self):
+        fornecedores = DaoFornecedor.ler()
+        if len(fornecedores) == 0:
+            print('Lista de fornecedores vazia')
+
+        for i in fornecedores:
+            print("========== Fornecedores ==========")
+            print(f"Categoria fornecida: {i.categoria}\n"
+                    f"Nome: {i.nome}\n"
+                    f"Telefone: {i.telefone}\n"
+                    f"Cnpj: {i.cnpj}\n")
+            
+
 
 
 
