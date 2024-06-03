@@ -100,11 +100,11 @@ class DaoPessoa:
             cls.clientes = arq.readlines()
 
         cls.clientes = list(map(lambda x: x.replace('\n', ''), cls.clientes))
-        cls.clientes = list(map(lambda x: x.split('\n', ''), cls.clientes))
+        cls.clientes = list(map(lambda x: x.split('|'), cls.clientes))
 
         clientes = []
         for i in cls.clientes:
-            clientes.append(Pessoa(i[0], i[1], i[2]), i[3], i[4])
+            clientes.append(Pessoa(i[0], i[1], i[2], i[3], i[4]))
 
         return clientes
     
@@ -122,10 +122,10 @@ class DaoFuncionario:
             cls.funcionarios = arq.readlines()
 
         cls.funcionarios = list(map(lambda x: x.replace('\n', ''), cls.funcionarios))
-        cls.funcionarios = list(map(lambda x: x.split('\n', ''), cls.funcionarios))
+        cls.funcionarios = list(map(lambda x: x.split('|'), cls.funcionarios))
 
         funcionario = []
         for i in cls.funcionarios:
-            funcionario.append(Funcionario(i[0], i[1], i[2]), i[3], i[4], i[5])
+            funcionario.append(Funcionario(i[0], i[1], i[2], i[3], i[4], i[5]))
 
         return funcionario

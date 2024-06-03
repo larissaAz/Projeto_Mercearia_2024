@@ -1,0 +1,4 @@
+martha|33465780984|34566789076|martha@gmail.com|br
+bia|12345678901|12345678901|bia@gmail.com|br
+elo|12345678901|62345678901|.@gmail.com|br
+paula|12345678901|82335678901|.@gmail.com|br
