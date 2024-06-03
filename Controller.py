@@ -28,10 +28,19 @@ class ControllerCategoria:
                     del x[i]
                     break
             print('Categoria removida com sucesso')
-        #TODO: COLOCAR SEM CATEGORIA NO ESTOQUE
             with open('categoria.txt', 'w') as arq:
                 for i in x:
                     arq.writelines(i.categoria)
+                    arq.writelines('\n')
+
+        estoque = DaoEstoque.ler()
+
+        estoque = list(map(lambda x: Estoque(Produtos(x.produto.nome, x.produto.preco, "Sem categoria"), x.quantidade) 
+                           if(x.produto.categoria == categoriaRemover) else (x), estoque))
+        
+        with open('estoque.txt', 'w') as arq:
+            for i in estoque:
+                    arq.writelines(i.produto.nome + "|" + i.produto.preco + "|" + i.produto.categoria + "|" + str(i.quantidade))
                     arq.writelines('\n')
 
     def alterarCategoria(self, categoriaAlterar, categoriaAlterada):
@@ -44,7 +53,16 @@ class ControllerCategoria:
             if len(cat1) == 0:
                 x = list(map(lambda x: Categoria(categoriaAlterada) if(x.categoria == categoriaAlterar) else(x), x))
                 print('Alterado com sucesso!')
-            #TODO: ALTERAR A CATEGORIA TAMBEM DO ESTOQUE
+
+                estoque = DaoEstoque.ler()
+
+                estoque = list(map(lambda x: Estoque(Produtos(x.produto.nome, x.produto.preco, categoriaAlterada), x.quantidade) 
+                                if(x.produto.categoria == categoriaAlterar) else (x), estoque))
+                
+                with open('estoque.txt', 'w') as arq:
+                    for i in estoque:
+                            arq.writelines(i.produto.nome + "|" + i.produto.preco + "|" + i.produto.categoria + "|" + str(i.quantidade))
+                            arq.writelines('\n')
             else:
                 print("A categoria para qual deseja alterar já existe!")
 
@@ -415,4 +433,5 @@ class ControllerFuncionario:
                   f"Endereço: {i.endereco}\n"
                   f"Clt: {i.clt}\n")
             
-            
+
+

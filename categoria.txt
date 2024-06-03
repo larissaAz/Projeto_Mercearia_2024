@@ -1,4 +1,2 @@
-Verduras
-Legumes
+legumes
 frios
-congelados
