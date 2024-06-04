@@ -166,7 +166,7 @@ class ControllerVenda:
             if existe == False:
                 if i.produto.nome == nomeProduto:
                     existe = True
-                    if i.quantidade >= quantidadeVendida:
+                    if i.quantidade >= int(quantidadeVendida):
                         quantidade = True
                         i.quantidade = int(i.quantidade) - int(quantidadeVendida)
 
@@ -433,5 +433,6 @@ class ControllerFuncionario:
                   f"Endereço: {i.endereco}\n"
                   f"Clt: {i.clt}\n")
             
+
 
 

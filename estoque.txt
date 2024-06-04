@@ -1,5 +1,0 @@
-maca|4|Sem categoria|1
-banana|5|Sem categoria|1
-uva|12|Sem categoria|2
-limao|3|legumes|6
-leite|3|legumes|6
